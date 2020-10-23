@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:postgresql:time-in-words.c4529aderb6p.us-east-2.rds.amazonaws.com:5432
+    username: postgresql
+    password: Revature
