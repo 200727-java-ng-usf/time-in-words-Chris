@@ -1,5 +1,25 @@
+server:
+  port: 8080
+
 spring:
-  datasource:
-    url: jdbc:postgresql:time-in-words.c4529aderb6p.us-east-2.rds.amazonaws.com:5432
-    username: postgresql
-    password: Revature
+  application:
+    name: time-in-words
+  h2:
+    console:
+      enabled: true
+      path: /h2
+    datasource:
+      url: jdbc:h2:mem:testdb
+      driver-class-name: org.h2.Driver
+      username: sa
+      password: password
+    jpa:
+      database-platform: org.hibernate.dialect.H2Dialect
+      show-sql: true
+      hibernate:
+        ddl-auto: create
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

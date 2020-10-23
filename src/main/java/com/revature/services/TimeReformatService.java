@@ -3,9 +3,11 @@ package com.revature.services;
 
 
 
+import org.springframework.stereotype.Service;
+
 import static java.lang.Integer.parseInt;
 
-
+@Service
 public class TimeReformatService {
 
     public String reformatTime(String oldTime){

@@ -16,8 +16,6 @@ import static java.time.format.DateTimeFormatter.ofLocalizedTime;
 public class Event {
 
 
-    TimeReformatService timeReformatService = new TimeReformatService();
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
@@ -34,10 +32,9 @@ public class Event {
     public Event() {
     }
 
-    public Event(String name, String location, String time) {
-        this.name = name;
-        this.location = location;
-        this.time = time;
+    public Event(Integer id, String name, String location) {
+        this(name, location);
+        this.id = id;
     }
 
     public Event(String name, String location) {
@@ -45,8 +42,7 @@ public class Event {
         this.location = location;
         LocalDateTime date = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("h:m");
-        String time = date.format(formatter);
-        this.time = timeReformatService.reformatTime(time);
+        this.time = date.format(formatter);
     }
 
     public int getId() {

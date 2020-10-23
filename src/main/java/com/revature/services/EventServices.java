@@ -11,13 +11,16 @@ import java.util.List;
 @Service
 public class EventServices {
 
-    EventRepo eventRepo;
-
+    private EventRepo eventRepo;
+    private TimeReformatService timeReformatService;
 
     @Autowired
-    public EventServices(EventRepo eventRepo) {
+    public EventServices(EventRepo eventRepo, TimeReformatService timeReformatService) {
         this.eventRepo = eventRepo;
+        this.timeReformatService = timeReformatService;
     }
+
+
 
 
 
@@ -32,5 +35,18 @@ public class EventServices {
         return event;
     }
 
+    public Event saveEvent(Event event){
+        String time = event.getTime();
+        event.setTime(timeReformatService.reformatTime(time));
+        return eventRepo.save(event);
+    }
+
+    public Event updateEvent(Event updatedEvent){
+        return eventRepo.save(updatedEvent);
+    }
+
+    public void deleteEvent(Event event){
+        eventRepo.delete(event);
+    }
 
 }
