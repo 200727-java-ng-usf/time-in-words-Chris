@@ -17,6 +17,7 @@ public class Event {
 
 
     @Id
+    //Id won't auto generate, not sure why
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 

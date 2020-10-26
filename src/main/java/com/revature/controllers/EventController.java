@@ -31,8 +31,7 @@ public class EventController {
 
     @PostMapping
     public Event registerNewEvent(@RequestBody Event newEvent){
-        Event event = new Event(newEvent.getName(), newEvent.getLocation());
-        return eventServices.saveEvent(event);
+        return eventServices.saveEvent(newEvent);
     }
 
     @PutMapping
